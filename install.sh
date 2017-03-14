@@ -22,5 +22,8 @@ install toprc $HOME/.toprc
 # .screenrc
 install screenrc $HOME/.screenrc
 
+# matplotlibrc
+install matplotlibrc $HOME/.config/matplotlib/matplotlibrc
+
 
 echo "Config files installed."

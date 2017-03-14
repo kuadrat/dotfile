@@ -23,5 +23,8 @@ update $HOME/.toprc ./toprc
 # .screenrc
 update $HOME/.screenrc ./screenrc
 
+# matplotlibrc
+update $HOME/.config/matplotlib/matplotlibrc ./matplotlibrc
+
 
 echo "Config files updated."
