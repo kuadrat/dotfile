@@ -20,4 +20,8 @@ update $HOME/.bashrc ./bashrc
 # .toprc
 update $HOME/.toprc ./toprc
 
+# .screenrc
+update $HOME/.screenrc ./screenrc
+
+
 echo "Config files updated."

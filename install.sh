@@ -19,4 +19,8 @@ install bashrc $HOME/.bashrc
 # .toprc
 install toprc $HOME/.toprc
 
+# .screenrc
+install screenrc $HOME/.screenrc
+
+
 echo "Config files installed."
