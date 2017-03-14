@@ -104,11 +104,20 @@ done
 #************************************************************
 #------------------------------------------------------------\e[m"
  
-# Custom prompt
-# Changes color depending on number of open terminals
-PS1COLORS=( 14 10 11 13 )
-COLOR=$( echo $(who | wc -l) % ${#PS1COLORS[@]} | bc )
-export PS1="\[\e[38;5;"${PS1COLORS[$COLOR]}"m\] \w \$ \[\e[m\]"
+# Check if we're running a screen session and change the prompt accordingly
+if [ $WINDOW ]; then
+    export PS1='\[\e[38;5;2m\][${STY}:\[\e[1m\]${WINDOW}\[\e[0;38;5;2m\]]\[\e[38;5;1m\] \w \$ \[\e[m\]'
+    alias ls='ls --color=auto'
+else    
+    # Custom prompt
+    # Changes color depending on number of open terminals
+    PS1COLORS=( 14 10 11 13 )
+    COLOR=$( echo $(who | wc -l) % ${#PS1COLORS[@]} | bc )
+    export PS1="\[\e[38;5;"${PS1COLORS[$COLOR]}"m\] \w \$ \[\e[m\]"
+    # Prompt that shows host, useful for remote machines:
+    # export PS1='\[\e[38;5;11m\][\h]\[\e[38;5;1m\] \w \$ \[\e[m\]'
+fi
+
 
 
 # mongoDB binaries einbinden
