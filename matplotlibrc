@@ -266,7 +266,10 @@ lines.markeredgewidth  : 0     # the line width around the marker symbol
                                             # as list of string colorspecs:
                                             # single letter, long name, or
                                             # web-style hex
+# k1                                            
 axes.color_cycle     : 386cb0, 7fc97f, fdc086, bf5b16, 751b6d, d8c4f5, e30278, 222222 
+# CLBLND FRIENDLY COLORFUL (except 01edc7 was exchanged for 222222 and for ??? d8c4f5
+#axes.color_cycle     : 00599f, 009757, d8c4f5, 8f0033, cd690f, c653c1, 1990ff, 222222 
 #axes.xmargin        : 0  # x margin.  See `axes.Axes.margins`
 #axes.ymargin        : 0  # y margin See `axes.Axes.margins`
 

@@ -9,11 +9,13 @@ function update {
     cp -r $1 $2
 }
 
+# Get destinations and locations from a routefile
 FILES=($(cat $ROUTEFILE))
 L=${#FILES[@]}
 
 i="0"
 
+# Update all files specified in the ROUTEFILE
 while [ $i -lt $L ]; do
     update $HOME/${FILES[i]} ${FILES[i+1]}
     i=$[$i+2]
