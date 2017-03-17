@@ -1,0 +1,5 @@
+.vimrc      ./vim
+.bashrc     ./bashrc
+.toprc      ./toprc
+.screenrc   ./screenrc
+.config/matplotlib/matplotlibrc     ./matplotlibrc
