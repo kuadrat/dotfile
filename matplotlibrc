@@ -82,6 +82,7 @@ lines.linewidth   : 2.0     # line width in points
 #lines.markeredgewidth  : 0.5     # the line width around the marker symbol
 lines.markeredgewidth  : 0     # the line width around the marker symbol
 #lines.markersize  : 6            # markersize, in points
+lines.markersize  : 9            # markersize, in points
 #lines.dash_joinstyle : miter        # miter|round|bevel
 #lines.dash_capstyle : butt          # butt|round|projecting
 #lines.solid_joinstyle : miter       # miter|round|bevel
@@ -145,6 +146,7 @@ lines.markeredgewidth  : 0     # the line width around the marker symbol
 # relative to font.size, using the following values: xx-small, x-small,
 # small, medium, large, x-large, xx-large, larger, or smaller
 #font.size           : 12.0
+font.size           : 18.0
 #font.serif          : Bitstream Vera Serif, New Century Schoolbook, Century Schoolbook L, Utopia, ITC Bookman, Bookman, Nimbus Roman No9 L, Times New Roman, Times, Palatino, Charter, serif
 #font.sans-serif     : Bitstream Vera Sans, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif
 #font.cursive        : Apple Chancery, Textile, Zapf Chancery, Sand, cursive
@@ -311,6 +313,7 @@ axes.color_cycle     : 386cb0, 7fc97f, fdc086, bf5b16, 751b6d, d8c4f5, e30278, 2
 #legend.isaxes        : True
 #legend.numpoints     : 2      # the number of points in the legend line
 #legend.fontsize      : large
+legend.fontsize      : medium
 #legend.borderpad     : 0.5    # border whitespace in fontsize units
 #legend.markerscale   : 1.0    # the relative size of legend markers vs. original
 # the following dimensions are in axes coords
@@ -341,6 +344,7 @@ axes.color_cycle     : 386cb0, 7fc97f, fdc086, bf5b16, 751b6d, d8c4f5, e30278, 2
 #figure.subplot.left    : 0.125  # the left side of the subplots of the figure
 #figure.subplot.right   : 0.9    # the right side of the subplots of the figure
 #figure.subplot.bottom  : 0.1    # the bottom of the subplots of the figure
+figure.subplot.bottom  : 0.15    # the bottom of the subplots of the figure
 #figure.subplot.top     : 0.9    # the top of the subplots of the figure
 #figure.subplot.wspace  : 0.2    # the amount of width reserved for blank space between subplots
 #figure.subplot.hspace  : 0.2    # the amount of height reserved for white space between subplots
@@ -400,6 +404,7 @@ axes.color_cycle     : 386cb0, 7fc97f, fdc086, bf5b16, 751b6d, d8c4f5, e30278, 2
 #savefig.jpeg_quality: 95       # when a jpeg is saved, the default quality parameter.
 #savefig.directory   : ~        # default directory in savefig dialog box,
                                 # leave empty to always use current working directory
+savefig.directory   :         
 #savefig.transparent : False    # setting that controls whether figures are saved with a 
                                 # transparent background by default
 
