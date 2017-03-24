@@ -185,8 +185,12 @@ export G4SAIDXSDATA="/home/kevin/Programme/geant4/geant4.10.01.p01-install/share
 
 # temporarily add MT scripts
 PATH="/home/kevin/Dokumente/uni/master_thesis/data/scripts:${PATH}"
-PATH="/home/kevin/perl5/bin:$PATH"; export PATH;
+# temporrily add MT python modules
+PYTHONPATH="${PYTHONPATH}:/home/kevin/uni/master_thesis/data/scripts/Python_APIS"
+PYTHONPATH="${PYTHONPATH}:/home/kevin/bin/"
+export PYTHONPATH
 
+PATH="/home/kevin/perl5/bin:$PATH"; export PATH;
 PERL5LIB="/home/kevin/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/kevin/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/kevin/perl5\""; export PERL_MB_OPT;

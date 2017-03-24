@@ -269,7 +269,8 @@ font.size           : 18.0
                                             # single letter, long name, or
                                             # web-style hex
 # k1                                            
-axes.color_cycle     : 386cb0, 7fc97f, fdc086, bf5b16, 751b6d, d8c4f5, e30278, 222222 
+#axes.prop_cycle      :  cycler('marker', ['o', 'v', 's', '^', 'p', '<', '*', '>']) + cycler('color', ['386cb0', 'fdc97f', '7fc97f', 'bf5b16', '751b6d', 'd8c4f5', 'e30278', '222222']) + cycler('linestyle', ['-', '--', '-.', ':', '-', '--', '-.', ':'])
+#axes.color_cycle     : 386cb0, 7fc97f, fdc086, bf5b16, 751b6d, d8c4f5, e30278, 222222 
 # CLBLND FRIENDLY COLORFUL (except 01edc7 was exchanged for 222222 and for ??? d8c4f5
 #axes.color_cycle     : 00599f, 009757, d8c4f5, 8f0033, cd690f, c653c1, 1990ff, 222222 
 #axes.xmargin        : 0  # x margin.  See `axes.Axes.margins`
