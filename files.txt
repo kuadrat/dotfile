@@ -3,3 +3,4 @@
 .toprc      ./toprc
 .screenrc   ./screenrc
 .config/matplotlib/matplotlibrc     ./matplotlibrc
+bin/kustom/ ./kustom/

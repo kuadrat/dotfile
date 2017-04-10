@@ -331,6 +331,7 @@ legend.fontsize      : medium
 ### FIGURE
 # See http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure
 #figure.figsize   : 8, 6    # figure size in inches
+figure.figsize   : 8.5, 6    # figure size in inches
 #figure.dpi       : 80      # figure dots per inch
 #figure.facecolor : 0.75    # figure facecolor; 0.75 is scalar gray
 #figure.edgecolor : white   # figure edgecolor
@@ -343,6 +344,7 @@ legend.fontsize      : medium
 # The figure subplot parameters.  All dimensions are a fraction of the
 # figure width or height
 #figure.subplot.left    : 0.125  # the left side of the subplots of the figure
+#figure.subplot.left    : 0.15  # the left side of the subplots of the figure
 #figure.subplot.right   : 0.9    # the right side of the subplots of the figure
 #figure.subplot.bottom  : 0.1    # the bottom of the subplots of the figure
 figure.subplot.bottom  : 0.15    # the bottom of the subplots of the figure
