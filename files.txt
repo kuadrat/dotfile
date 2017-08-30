@@ -4,3 +4,4 @@
 .screenrc   ./screenrc
 .config/matplotlib/matplotlibrc     ./matplotlibrc
 bin/kustom/ ./kustom/
+.dir_dolors ./dir_colors
