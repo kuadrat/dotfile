@@ -106,14 +106,14 @@ done
  
 # Check if we're running a screen session and change the prompt accordingly
 if [ $WINDOW ]; then
-    export PS1='\[\e[38;5;2m\][${STY}:\[\e[1m\]${WINDOW}\[\e[0;38;5;2m\]]\[\e[38;5;1m\] \w \$ \[\e[m\]'
+    export PS1='\[\e[38;5;2m\][${STY}:\[\e[1m\]${WINDOW}\[\e[0;38;5;2m\]]\[\e[38;5;1m\]\w \$ \[\e[m\]'
     alias ls='ls --color=auto'
 else    
     # Custom prompt
     # Changes color depending on number of open terminals
     PS1COLORS=( 14 10 11 13 )
     COLOR=$( echo $(who | wc -l) % ${#PS1COLORS[@]} | bc )
-    export PS1="\[\e[38;5;"${PS1COLORS[$COLOR]}"m\] \w \$ \[\e[m\]"
+    export PS1="\[\e[38;5;"${PS1COLORS[$COLOR]}"m\]\w \$ \[\e[m\]"
     # Prompt that shows host, useful for remote machines:
     # export PS1='\[\e[38;5;11m\][\h]\[\e[38;5;1m\] \w \$ \[\e[m\]'
 fi
@@ -132,6 +132,7 @@ fi
 
 alias ..="cd .."
 
+# ssh shortcuts
 alias unissh="ssh -2Y kekram@linux.physik.uzh.ch"
 alias ethssh="ssh kramerk@login.phys.ethz.ch"
 alias safirssh="ssh -fN -l root -L 9999:localhost:27017 mri-pet.ethz.ch"
@@ -142,6 +143,7 @@ alias monch="ssh -Y kramerk@ela.cscs.ch"
 
 alias ela="ssh -Y stud05@ela.cscs.ch"
 
+# vpn shortcut
 alias ethvpn="/opt/cisco/anyconnect/bin/vpn connect sslvpn.ethz.ch/"
 
 
@@ -169,14 +171,14 @@ function gwall {
 unalias beep
 
 # Programme aus Terminal
-alias eclipse="/home/kevin/Eclipse/eclipse/eclipse"
-alias ts3="/home/kevin/Programme/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh"
+#alias eclipse="/home/kevin/Eclipse/eclipse/eclipse"
+#alias ts3="/home/kevin/Programme/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh"
 
 # Géant4 variables
-export G4LEDATA="/home/kevin/Programme/geant4/geant4.10.01.p01-install/share/Geant4-10.1.1/data/G4EMLOW6.41"
-export G4LEVELGAMMADATA="/home/kevin/Programme/geant4/geant4.10.01.p01-install/share/Geant4-10.1.1/data/G4PhotonEvaporation3.1"
-export G4NEUTRONXSDATA="/home/kevin/Programme/geant4/geant4.10.01.p01-install/share/Geant4-10.1.1/data/G4NEUTRONXS1.4"
-export G4SAIDXSDATA="/home/kevin/Programme/geant4/geant4.10.01.p01-install/share/Geant4-10.1.1/data/G4SAIDDATA1.1"
+#export G4LEDATA="/home/kevin/Programme/geant4/geant4.10.01.p01-install/share/Geant4-10.1.1/data/G4EMLOW6.41"
+#export G4LEVELGAMMADATA="/home/kevin/Programme/geant4/geant4.10.01.p01-install/share/Geant4-10.1.1/data/G4PhotonEvaporation3.1"
+#export G4NEUTRONXSDATA="/home/kevin/Programme/geant4/geant4.10.01.p01-install/share/Geant4-10.1.1/data/G4NEUTRONXS1.4"
+#export G4SAIDXSDATA="/home/kevin/Programme/geant4/geant4.10.01.p01-install/share/Geant4-10.1.1/data/G4SAIDDATA1.1"
 
 # root
 #source /home/kevin/Programme/root/root5/bin/thisroot.sh
@@ -184,13 +186,13 @@ export G4SAIDXSDATA="/home/kevin/Programme/geant4/geant4.10.01.p01-install/share
 #alias root6="root6 -l"
 
 # temporarily add MT scripts
-PATH="/home/kevin/Dokumente/uni/master_thesis/data/scripts:${PATH}"
+PATH="/home/kevin/Documents/uni/master_thesis/data/scripts:${PATH}"
 # temporrily add MT python modules
 PYTHONPATH="${PYTHONPATH}:/home/kevin/uni/master_thesis/data/scripts/Python_APIS"
 PYTHONPATH="${PYTHONPATH}:/home/kevin/bin/"
 export PYTHONPATH
 
-PATH="/home/kevin/perl5/bin:$PATH"; export PATH;
+#PATH="/home/kevin/perl5/bin:$PATH"; export PATH;
 PERL5LIB="/home/kevin/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/kevin/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/kevin/perl5\""; export PERL_MB_OPT;

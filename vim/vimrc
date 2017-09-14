@@ -74,6 +74,12 @@ function Break(...)
     else
         let c = a:1
     end
+    " Check if we're one iteration level deeper
+    if a:0 > 1
+        let iter = a:2
+    else
+        let iter = 0
+    end
 
     " Get length of this line, break it if it's over 80
     let column = col('$') - 1
@@ -97,9 +103,21 @@ function Break(...)
         " The actual action
         execute "normal! ".c."|Bi\<CR>\<Esc>\"kP"
     else
-        echo "Line not longer than " . c
+        if iter == 0
+            execute "normal! J"
+            call Break(c, 1)
+        else
+            echo "Line not longer than " . c
+        end
     endif
 endfunction
 
 nnoremap <C-P> :call Break()<CR>
 
+" Function and corresponding user command to create latex begin and end block
+function! LatexBlock(name)
+    execute "normal! i\\begin{" . a:name . "}\<CR>\<CR>\\end{" . a:name . 
+                \ "}\<Esc>k"
+endfunction
+
+com -nargs=1 LB call LatexBlock(<f-args>)
