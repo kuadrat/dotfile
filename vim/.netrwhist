@@ -1,3 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/home/kevin/Dokumente/uni/master_thesis/data/170313_lm_pl/cinap2_photodiode'
