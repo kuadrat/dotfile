@@ -2,106 +2,120 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
-"set relativenumber
+    "set relativenumber
 
-colorscheme wasabi256 "birds-of-paradise 
+    colorscheme wasabi256 "birds-of-paradise 
 
-" Map Esc from insert mode to 'jk'
-" inoremap jk <Esc>
-inoremap kj <Esc>
+    " Map Esc from insert mode to 'jk'
+    " inoremap jk <Esc>
+    inoremap kj <Esc>
 
-" Map 'Enter' to inserting newlines
-nmap <CR> o<Esc>
+    " Map 'Enter' to inserting newlines
+    nmap <CR> o<Esc>
 
-" Change basic cursor controls
-" v l  ^ k  < l  > ö
-nnoremap l h
-nnoremap ö l
-vnoremap l h
-vnoremap ö l
-
-" Show linenumbers and allow double-press of CTRL-N to toggle them
-set number
-nmap <C-N><C-N> :set nu!<CR>
-nmap <C-B><C-B> :set relativenumber!<CR>
-
-
-" CTRL-c to comment CTRL-x to uncomment with #
-nnoremap <C-c> :s/^\s*[^#]/#&/g<CR>:noh<CR>
-nnoremap <C-x> :s/^#//g<CR>:noh<CR>
-vnoremap <C-c> :s/^[^#]/#&/g<CR>:noh<CR>
-vnoremap <C-x> :s/^#//g<CR>:noh<CR>
-inoremap <C-c> <Esc>:s/^[^#]/#&/g<CR>:noh<CR>i
-inoremap <C-x> <Esc>:s/^#//g<CR>:noh<CR>i
+    " Change basic cursor controls
+    " v l  ^ k  < l  > ö
+    "nnoremap l h
+    "nnoremap ö l
+    "vnoremap l h
+    "vnoremap ö l
+    " For US keyboard this is bad. use the following instead
+    nnoremap l h
+    nnoremap ; l
+    vnoremap l h
+    vnoremap ; l
 
 
-" Function to fill with a string up to linenumber
-function Fill(...)
-    if a:0 == 0
-        let str = "-"
-        let n = 80
-    else
-        if a:0 ==1
-            let n = a:1
+    " Show linenumbers and allow double-press of CTRL-N to toggle them
+    set number
+    nmap <C-N><C-N> :set nu!<CR>
+    nmap <C-B><C-B> :set relativenumber!<CR>
+
+
+    " CTRL-c to comment CTRL-x to uncomment with #
+    nnoremap <C-c> :s/^\s*[^#]/#&/g<CR>:noh<CR>
+    nnoremap <C-x> :s/^#//g<CR>:noh<CR>
+    vnoremap <C-c> :s/^[^#]/#&/g<CR>:noh<CR>
+    vnoremap <C-x> :s/^#//g<CR>:noh<CR>
+    inoremap <C-c> <Esc>:s/^[^#]/#&/g<CR>:noh<CR>i
+    inoremap <C-x> <Esc>:s/^#//g<CR>:noh<CR>i
+
+
+    " Function to fill with a string up to linenumber
+    function Fill(...)
+        if a:0 == 0
             let str = "-"
+            let n = 80
         else
-            let n = a:1
-            let str = a:2
+            if a:0 ==1
+                let n = a:1
+                let str = "-"
+            else
+                let n = a:1
+                let str = a:2
+            end
         end
-    end
-    execute "normal! " . n ."A" . str
-    execute "normal! " . "d" . n . "|"
-endfunction
+        execute "normal! " . n ."A" . str
+        execute "normal! " . "d" . n . "|"
+    endfunction
 
-" Underline the current line
-function U(...)
-    if a:0 == 0
-        let s = "-"
-    else
-        let s = a:1
-    end
-    let c = virtcol( [ line("."), "$" ] ) - 1
-    execute "normal! o# "
-    call Fill(c, s)
-endfunction
-
-" Function to reformat a block of text such that its max width is 80
-" Also try to stay commented if the line starts with #, or //
-function Break(...)
-    " Parse options
-    if a:0 == 0
-        let c = 80
-    else
-        let c = a:1
-    end
-    " Check if we're one iteration level deeper
-    if a:0 > 1
-        let iter = a:2
-    else
-        let iter = 0
-    end
-
-    " Get length of this line, break it if it's over 80
-    let column = col('$') - 1
-    if column > c
-        " Now check if we're in a comment block
-        " Save the first 'word' in register k
-        " Need two slightly different commands depending on whether or not
-        " there are whitespaces at the beginning of the line
-        let first = getline(".")[0]
-        if first == " "
-            execute "normal! 0wvwh\"ky"
+    " Underline the current line
+    function U(...)
+        if a:0 == 0
+            let s = "-"
         else
-            execute "normal! 0vwh\"ky"
-        endif
+            let s = a:1
+        end
+        let c = virtcol( [ line("."), "$" ] ) - 1
+        execute "normal! o# "
+        call Fill(c, s)
+    endfunction
 
-        " Split off unnecessary whitespaces at the end of k
-        let k = split(@k)[0]
-        if k != "//" && k != "#"
-            let @k = ""
+    " Function to reformat a block of text such that its max width is 80
+    " Also try to stay commented if the line starts with #, or //
+    function Break(...)
+        " Parse options
+        if a:0 == 0
+            let c = 80
+        else
+            let c = a:1
+        end
+        " Check if we're one iteration level deeper
+        if a:0 > 1
+            let iter = a:2
+        else
+            let iter = 0
+        end
+
+        " Get length of this line, break it if it's over 80
+        let column = col('$') - 1
+        if column > c
+            " Now check if we're in a comment block
+            " Save the first 'word' in register k
+            " Need two slightly different commands depending on whether or not
+            " there are whitespaces at the beginning of the line
+            let first = getline(".")[0]
+            if first == " "
+                execute "normal! 0wvwh\"ky"
+            else
+                execute "normal! 0vwh\"ky"
+            endif
+            
+            " Split off unnecessary whitespaces at the end of k
+            let k = split(@k)[0]
+            if k != "//" && k != "#"
+                let @k = ""
+            endif
+            " The actual action
+            execute "normal! ".c."|Bi\<CR>\<Esc>"
+            let first = getline(".")[0]
+            " If we are indented the automatic indentation messes up our position
+        " thus we need to move the cursor.
+        if first == " "
+            execute "normal! 0w"
         endif
-        " The actual action
-        execute "normal! ".c."|Bi\<CR>\<Esc>\"kP"
+        " Paste the comment character
+        execute "normal! \"kP"
     else
         if iter == 0
             execute "normal! J"

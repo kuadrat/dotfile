@@ -73,49 +73,35 @@ KEY=(
 "                \`;;;;;;;;;'"
 )
 
-# Determine which message is displayed randomly
-if (( $(echo $RANDOM % 2 | bc) )); then
-    MESSAGE=( "${KEY[@]}" )
-else
-    MESSAGE=( "${KBOX[@]}" )
-fi
-
-COLORS=(35 95 94 34 36 96 92 32 93 33 91 31)
-I=0
-N=${#COLORS[@]}
-for line in "${MESSAGE[@]}"; do
-    echo -e "\e["${COLORS[(($I%$N))]}";2m$line\e[m"
-    I=$(echo $I+1 | bc)
-done
-
-#echo -e "\e[4;36m
-#------------------------------------------------------------
-#************************************************************\e[m \e[1;34m
-# ___    ___   __________   ___       ___   ___   ___    ___
-#|   |  /   / |          | |   |     |   | |   | |   \  |   |
-#|   | /   /  |   _______| |   |     |   | |   | |    \ |   | 
-#|   |/   /   |  |___       \   \   /   /  |   | |     \|   |
-#|       /    |      |       \   \ /   /   |   | |          |
-#|       \    |   ___|        \   V   /    |   | |          |
-#|   |\   \   |  |_______      \     /     |   | |   |\     |
-#|   | \   \  |          |      \   /      |   | |   | \    |
-#|___|  \___\ |__________|       \_/       |___| |___|  \___|\e[m \e[4;36m
-#
-#************************************************************
-#------------------------------------------------------------\e[m"
  
 # Check if we're running a screen session and change the prompt accordingly
 if [ $WINDOW ]; then
-    export PS1='\[\e[38;5;2m\][${STY}:\[\e[1m\]${WINDOW}\[\e[0;38;5;2m\]]\[\e[38;5;1m\]\w \$ \[\e[m\]'
+    # Prompt that shows host, useful for remote machines:
+    export PS1='\[\e[38;5;2m\][SCREEN:\[\e[1m\]${WINDOW}\[\e[0;38;5;2m\]]\[\e[38;5;1m\]\w \$ \[\e[m\]'
     alias ls='ls --color=auto'
 else    
-    # Custom prompt
+    # Define the custom prompt for regular bash sessions
     # Changes color depending on number of open terminals
     PS1COLORS=( 14 10 11 13 )
     COLOR=$( echo $(who | wc -l) % ${#PS1COLORS[@]} | bc )
     export PS1="\[\e[38;5;"${PS1COLORS[$COLOR]}"m\]\w \$ \[\e[m\]"
-    # Prompt that shows host, useful for remote machines:
-    # export PS1='\[\e[38;5;11m\][\h]\[\e[38;5;1m\] \w \$ \[\e[m\]'
+
+    # Send a greeting message
+    # Determine which message is displayed randomly
+    if (( $(echo $RANDOM % 2 | bc) )); then
+        MESSAGE=( "${KEY[@]}" )
+    else
+        MESSAGE=( "${KBOX[@]}" )
+    fi
+
+    COLORS=(35 95 94 34 36 96 92 32 93 33 91 31)
+    I=0
+    N=${#COLORS[@]}
+    for line in "${MESSAGE[@]}"; do
+        echo -e "\e["${COLORS[(($I%$N))]}";2m$line\e[m"
+        I=$(echo $I+1 | bc)
+    done
+   # export PS1='\[\e[38;5;11m\][\h]\[\e[38;5;1m\] \w \$ \[\e[m\]'
 fi
 
 
@@ -127,9 +113,11 @@ fi
 # config file for mri-pet web application development
 #export SAFIR_CONFIG_FILE="/home/kevin/Dokumente/safir/local_config.py"
 
+# When using su to login as root, the right .bashrc or .profile aren't read - 
+# this works, however with "su -"
+alias su="su -"
 
 # Zeitsparer
-
 alias ..="cd .."
 
 # ssh shortcuts
