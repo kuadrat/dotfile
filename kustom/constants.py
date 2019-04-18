@@ -13,8 +13,14 @@ N_A = 6.022e23
 # Bohr's Magneton [J/T]
 mu_bohr = 9.274009994e-24
 
+# Bohr radius [m]
+a0 = 5.2917721067e-11
+
 # Boltzmann constant [J/K]
 k_B = 1.38064852e-23
+
+# Dielectric constant in vacuum [C / V / m]
+eps0 = 8.854e-12
 
 # Electronvolt [J]
 eV = 1.6021766208e-19
@@ -27,6 +33,9 @@ h = 6.626070040e-34
 
 # Speed of light [m / s]
 c = 299792458.
+
+# Universal Gas constant [J / K / mol]
+R = 8.3144598
 
 
 # Dependent constants

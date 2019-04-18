@@ -76,6 +76,7 @@ EXEC 00;32
 #.com 01;32
 #.btm 01;32
 #.bat 01;32
+.py 01;32
 # Or if you want to colorize scripts even if they do not have the
 # executable bit actually set.
 #.sh 01;32
@@ -137,6 +138,7 @@ EXEC 00;32
 .tif 00;35
 .tiff 00;35
 .png 00;35
+.eps 00;35
 .svg 00;35
 .svgz 00;35
 .mng 00;35

@@ -35,7 +35,9 @@
 # You can also deploy your own backend outside of matplotlib by
 # referring to the module name (which must be in the PYTHONPATH) as
 # 'module://my_backend'
-backend      : TkAgg
+#backend      : TkAgg
+#backend      : Qt4Agg
+backend      : Qt5Agg
 
 # If you are using the Qt4Agg backend, you can choose here
 # to use the PyQt4 bindings or the newer PySide bindings to
@@ -146,7 +148,7 @@ lines.markersize  : 9            # markersize, in points
 # relative to font.size, using the following values: xx-small, x-small,
 # small, medium, large, x-large, xx-large, larger, or smaller
 #font.size           : 12.0
-font.size           : 18.0
+font.size           : 14.0
 #font.serif          : Bitstream Vera Serif, New Century Schoolbook, Century Schoolbook L, Utopia, ITC Bookman, Bookman, Nimbus Roman No9 L, Times New Roman, Times, Palatino, Charter, serif
 #font.sans-serif     : Bitstream Vera Sans, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif
 #font.cursive        : Apple Chancery, Textile, Zapf Chancery, Sand, cursive
@@ -221,6 +223,7 @@ font.size           : 18.0
 #mathtext.sf  : sans
 #mathtext.fontset : cm # Should be 'cm' (Computer Modern), 'stix',
                        # 'stixsans' or 'custom'
+#mathtext.fontset : dejavuserif 
 #mathtext.fallback_to_cm : True  # When True, use symbols from the Computer Modern
                                  # fonts when a symbol can not be found in one of
                                  # the custom math fonts.
@@ -273,6 +276,7 @@ font.size           : 18.0
 #axes.color_cycle     : 386cb0, 7fc97f, fdc086, bf5b16, 751b6d, d8c4f5, e30278, 222222 
 # CLBLND FRIENDLY COLORFUL (except 01edc7 was exchanged for 222222 and for ??? d8c4f5
 #axes.color_cycle     : 00599f, 009757, d8c4f5, 8f0033, cd690f, c653c1, 1990ff, 222222 
+axes.xmargin        : 0.1  # x margin.  See `axes.Axes.margins`
 #axes.xmargin        : 0  # x margin.  See `axes.Axes.margins`
 #axes.ymargin        : 0  # y margin See `axes.Axes.margins`
 
@@ -314,7 +318,7 @@ font.size           : 18.0
 #legend.isaxes        : True
 #legend.numpoints     : 2      # the number of points in the legend line
 #legend.fontsize      : large
-legend.fontsize      : medium
+legend.fontsize      : small
 #legend.borderpad     : 0.5    # border whitespace in fontsize units
 #legend.markerscale   : 1.0    # the relative size of legend markers vs. original
 # the following dimensions are in axes coords
@@ -326,6 +330,7 @@ legend.fontsize      : medium
 #legend.columnspacing : 2.    # the border between the axes and legend edge in fraction of fontsize
 #legend.shadow        : False
 #legend.frameon       : True   # whether or not to draw a frame around legend
+legend.frameon       : False   # whether or not to draw a frame around legend
 #legend.scatterpoints : 3 # number of scatter points
 
 ### FIGURE
@@ -356,6 +361,7 @@ figure.subplot.bottom  : 0.15    # the bottom of the subplots of the figure
 #image.aspect : equal             # equal | auto | a number
 #image.interpolation  : bilinear  # see help(imshow) for options
 #image.cmap   : jet               # gray | jet etc...
+image.cmap   : Blues               # gray | jet etc...
 #image.lut    : 256               # the size of the colormap lookup table
 #image.origin : upper             # lower | upper
 #image.resample  : False

@@ -77,7 +77,7 @@ KEY=(
 # Check if we're running a screen session and change the prompt accordingly
 if [ $WINDOW ]; then
     # Prompt that shows host, useful for remote machines:
-    export PS1='\[\e[38;5;2m\][SCREEN:\[\e[1m\]${WINDOW}\[\e[0;38;5;2m\]]\[\e[38;5;1m\]\w \$ \[\e[m\]'
+    export PS1='\[\e[38;5;226m\][SCREEN:\[\e[1m\]${WINDOW}\[\e[0;38;5;226m\]]\[\e[38;5;26m\]\w \$ \[\e[m\]'
     alias ls='ls --color=auto'
 else    
     # Define the custom prompt for regular bash sessions
@@ -119,10 +119,17 @@ alias su="su -"
 
 # Zeitsparer
 alias ..="cd .."
+alias cdq="cd ~/Documents/qmap"
 
 # ssh shortcuts
-alias unissh="ssh -2Y kekram@linux.physik.uzh.ch"
-alias ethssh="ssh kramerk@login.phys.ethz.ch"
+PHYS_KEY="~/.ssh/id_rsa_physik"
+export PHYS_KEY
+alias unissh="ssh -i $PHYS_KEY -2Y kekram@linux.physik.uzh.ch"
+function ussh { ssh -i $PHYS_KEY -Y kekram@"$1".physik.uzh.ch; }
+export -f ussh
+alias pscp="scp -i $PHYS_KEY"
+
+ethssh="ssh kramerk@login.phys.ethz.ch"
 alias safirssh="ssh -fN -l root -L 9999:localhost:27017 mri-pet.ethz.ch"
 function pceth { ssh -Y mri-pet@pceth"$1".cern.ch; }
 export -f pceth
@@ -138,6 +145,8 @@ alias ethvpn="/opt/cisco/anyconnect/bin/vpn connect sslvpn.ethz.ch/"
 # Copy pasting
 alias c="xclip"
 alias v="xclip -o"
+alias pwdc="pwd|c"
+alias cdv='cd `v`'
 
 # Sicherheit beim Loeschen
 alias rm="rm -i"
@@ -156,32 +165,34 @@ function gwall {
 }
 
 # beep is aliased in /etc/profile.d/alias.bash - but I want the beep program
-unalias beep
+#unalias beep
 
 # Programme aus Terminal
 #alias eclipse="/home/kevin/Eclipse/eclipse/eclipse"
 #alias ts3="/home/kevin/Programme/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh"
 
-# Géant4 variables
-#export G4LEDATA="/home/kevin/Programme/geant4/geant4.10.01.p01-install/share/Geant4-10.1.1/data/G4EMLOW6.41"
-#export G4LEVELGAMMADATA="/home/kevin/Programme/geant4/geant4.10.01.p01-install/share/Geant4-10.1.1/data/G4PhotonEvaporation3.1"
-#export G4NEUTRONXSDATA="/home/kevin/Programme/geant4/geant4.10.01.p01-install/share/Geant4-10.1.1/data/G4NEUTRONXS1.4"
-#export G4SAIDXSDATA="/home/kevin/Programme/geant4/geant4.10.01.p01-install/share/Geant4-10.1.1/data/G4SAIDDATA1.1"
-
-# root
-#source /home/kevin/Programme/root/root5/bin/thisroot.sh
-#alias root5="root5 -l"
-#alias root6="root6 -l"
+# Enable 256 color support
+export TERM="xterm-256color"
 
 # temporarily add MT scripts
-PATH="/home/kevin/Documents/uni/master_thesis/data/scripts:${PATH}"
+#PATH="/home/kevin/Documents/uni/master_thesis/data/scripts:${PATH}"
 # temporrily add MT python modules
-PYTHONPATH="${PYTHONPATH}:/home/kevin/uni/master_thesis/data/scripts/Python_APIS"
+#PYTHONPATH="${PYTHONPATH}:/home/kevin/uni/master_thesis/data/scripts/Python_APIS"
+
+# Add QMAP scripts
+ANALYSIS="/home/kevin/Documents/qmap/analysis/"
+ARPYS="/home/kevin/bin/arpys/"
+PYTHONPATH="${PYTHONPATH}:$ANALYSIS/w2k:$ARPYS:$ARPYS/tools"
+PATH="$ARPYS:$ARPYS/tools:${PATH}"
+
 PYTHONPATH="${PYTHONPATH}:/home/kevin/bin/"
 export PYTHONPATH
+export PATH
+
+# For pyqtgraph+PyQt5
+PYQTGRAPH_QT_LIB='PyQt5'
+export PYQTGRAPH_QT_LIB
 
 #PATH="/home/kevin/perl5/bin:$PATH"; export PATH;
 PERL5LIB="/home/kevin/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/kevin/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/kevin/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/kevin/perl5"; export PERL_MM_OPT;
