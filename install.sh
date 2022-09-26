@@ -5,12 +5,12 @@ ROUTEFILE=files.txt
 
 function install {
     echo "Copying $1 to $2"
-    cp -r $1 $2
+    cp -Tr $1 $2
 }
 
 function backup {
     echo "Creating backup of $1 in $1_bk"
-    cp -r $1 $1_bk
+    cp -Tr $1 $1_bk
 }
 
 # Get destinations and locations from a routefile

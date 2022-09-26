@@ -1,7 +1,8 @@
 .vimrc      ./vimrc
-.bashrc     ./bashrc
+#.bashrc     ./bashrc
 .toprc      ./toprc
 .screenrc   ./screenrc
 .config/matplotlib/matplotlibrc     ./matplotlibrc
-bin/kustom/ ./
+#bin/kustom/ ./
 .dir_colors ./dir_colors
+.local/bin  ./bin

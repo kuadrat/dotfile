@@ -1,0 +1,4 @@
+#!/bin/bash
+# Calculate from the command line using numpy.
+
+python -c "from numpy import *; print($1)"

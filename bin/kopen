@@ -1,0 +1,5 @@
+#!/bin/bash
+# Open a file with the system default application without any association to 
+# a terminal and hide all output.
+
+nohup xdg-open "$@" >/dev/null 2>&1 &

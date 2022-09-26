@@ -1,0 +1,4 @@
+#!/bin/bash
+# Run a command without associating it to a terminal and hide all its output.
+
+nohup "$@" >/dev/null 2>&1 &
