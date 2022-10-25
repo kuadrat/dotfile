@@ -56,6 +56,8 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+PROMPT_SYMBOL=">"
+
 if [ "$color_prompt" = yes ]; then
     # Create a function that displays the current git branch (or nothing, if 
     # not in a git repo)
@@ -65,12 +67,12 @@ if [ "$color_prompt" = yes ]; then
     if [ $WINDOW ]; then
         # Prompt that shows host, useful for remote machines and screen sessions:
         #PS1='\[\e[38;5;226m\][SCREEN:\[\e[1m\]${WINDOW}\[\e[0;38;5;226m\]]\[\e[38;5;26m\]\w \$ \[\e[m\]'
-        PS1="\[\e[38;5;10m\]\$(git_branch)\[\e[38;5;9m\][SCREEN:\[\e[1m\]${WINDOW}\[\e[0;38;5;9m\]]\[\e[38;5;14m\]\w \$ \[\e[m\]"
+        PS1="\[\e[38;5;10m\]\$(git_branch)\[\e[38;5;9m\][SCREEN:\[\e[1m\]${WINDOW}\[\e[0;38;5;9m\]]\[\e[38;5;14m\]\w ${PROMPT_SYMBOL} \[\e[m\]"
     else
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] ${PROMPT_SYMBOL} '
     fi
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w ${PROMPT_SYMBOL} '
 fi
 unset color_prompt force_color_prompt
 
